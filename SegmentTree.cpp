@@ -73,7 +73,7 @@ int main()
          cin >> op >> a >> b;
          if(op == 1)
          {
-              query(a - 1, b, 0, ans); // query arr[a] ... arr[b - 1]
+              query(a - 1, b, 0, ans); // query sum of arr[a - 1] ... arr[b - 1]
               cout << ans << endl;
          }
          else
