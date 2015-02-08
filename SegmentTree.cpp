@@ -20,7 +20,7 @@ void build(int l, int r, int idx)
         ST[idx].data = arr[l];
     else
     {
-        int mid = (l + r) / 2;
+        int mid = (l + r) >> 1;
         int lson = ST[idx].lson = ++ptr;
         int rson = ST[idx].rson = ++ptr;
         build(l, mid, lson);
@@ -35,7 +35,7 @@ void query(int l, int r, int idx, int &ans)
         ans = ST[idx].data;
     else
     {
-        int mid = (ST[idx].l + ST[idx].r) / 2;
+        int mid = (ST[idx].l + ST[idx].r) >> 1;
         if(r <= mid) query(l, r, ST[idx].lson, ans);
         else if(l >= mid) query(l, r, ST[idx].rson, ans);
         else
@@ -54,7 +54,7 @@ void modify(int x, int v, int idx)
          ST[idx].data = v;
      else
      {
-          int mid = (ST[idx].l + ST[idx].r) / 2;
+          int mid = (ST[idx].l + ST[idx].r) >> 1;
           if(x < mid) modify(x, v, ST[idx].lson);
           else modify(x, v, ST[idx].rson);
           ST[idx].data = ST[ST[idx].lson].data + ST[ST[idx].rson].data;
